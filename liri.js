@@ -32,10 +32,16 @@ switch (argv2) {
     case "do-what-it-says":
         doThis(argv3);
         break;
+    default: 
+        console.log(`\nThat command cannot be found.\n-----------------------------\nPlease try one of the following:\n\t'concert-this'\n\t'spotify-this-song'\n\t'movie-this'\n\t'do-what-it-says'`)
+
 }
 
 function concertThis(artist) {
-    console.log("Concert this result", artist)
+    if (artist === "") {
+        console.log (`Oops. You forgot to add an artist.`);
+    }
+
     let link = ("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
 
     request(link, function (err, response, body) {
@@ -43,7 +49,7 @@ function concertThis(artist) {
 
         let res = JSON.parse(body)[0];
         if (res === undefined) {
-            console.log(`\n-------------------------------------\nSorry. It appears ${artist} has no scheduled concerts.\nPlease try a different artist.\n-------------------------------------\n`)
+            console.log(`\n-------------------------------------\nSorry. It appears there are no scheduled concerts.\nPlease try a different artist.\n-------------------------------------\n`)
         } else {
             console.log(`\n-------------------------------------\nArtist:\t${artist}\n ...Here are the next 3 concerts for ${artist}.`)
 
