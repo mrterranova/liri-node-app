@@ -61,7 +61,10 @@ function concertThis(artist) {
             for (var i = 0; i < 3; i++) {
 
                 let res = JSON.parse(body)[i];
-                console.log(`\t------------------------------\n\tVenue Name:\t${res.venue.name}\n\tVenue Location:\t${res.venue.city}. ${res.venue.country}\n\tDate of Event:\t${moment(res.datetime).format("MM/DD/YYYY")}`)
+                console.log(`\t------------------------------
+                \tVenue Name:\t${res.venue.name}
+                \tVenue Location:\t${res.venue.city}, ${res.venue.country}
+                \tDate of Event:\t${moment(res.datetime).format("MM/DD/YYYY")}`)
 
             }
             console.log(`-------------------------------------\n`)
@@ -71,12 +74,30 @@ function concertThis(artist) {
 
 //function for finding a song
 function spotifyThis(song) {
-    console.log("Spotify this result", song)
-    axios({
-        method: `get`,
-        url: `http://api.spotify.com/v1/search=track:${song.target.songName.value}`
-    })
-}
+    //if no song inserted then use Ace of Base
+    if (song === ""){
+        song = "The Sign, Ace of Base";
+    }
+
+    // search for track by song title and produce a limit of 5 songs
+    spotify.search({ type: 'track', query: song, limit:5  }, function (err, data) {
+        if (err) {
+	        //catch errors and print
+            return console.log('Error occurred: ' + err);
+        } 
+        console.log(`\n\t\tSearch for: ${song}`)
+        for (let i = 0; i < 5; i ++) {
+            console.log(`Result ${i+1}.-------------------------------------\n\tTrack Artist:\t\t${data.tracks.items[i].album.artists[0].name}`+
+            `\n\tTrack Title:\t\t${data.tracks.items[i].name}`+
+            `\n\tAlbum of Track:\t\t${data.tracks.items[i].album.name}`)
+            if (data.tracks.items[i].preview_url === null) {
+                console.log("\tPreview Address:\tNo preview available for this track.")
+            } else {
+                console.log(`\tPreview Address:\t${ data.tracks.items[i].preview_url }`)
+            }
+        }
+    });
+}   
 
 //function for finding a movie
 function movieThis(movie) {
@@ -88,7 +109,15 @@ function movieThis(movie) {
     axios.get(`http://www.omdbapi.com/?t=${movie}&y=&plot=short&apikey=trilogy`).then(
         function (response) {
             //return all the information
-            console.log(`\n-------------------------------------\nInformation on ${response.data.Title}:\n-------------------------------------\n\tYear of Release:\t${response.data.Year}\n\tIMBD Rating:\t\t${response.data.imdbRating}\n\tTomatoes Rating:\t${response.data.Ratings[1].Value}\n\tCountry of Production:\t${response.data.Country}\n\tLanguage/s:\t\t${response.data.Language}\n\tPlot:\t\t\t${response.data.Plot}\n\tActors:\t\t\t${response.data.Actors}\n`);
+            console.log(`\n-------------------------------------`+
+            `Information on ${response.data.Title}:\n-------------------------------------`+
+            `\n\tYear of Release:\t${response.data.Year}`+
+            `\n\tIMBD Rating:\t\t${response.data.imdbRating}`+
+            `\n\tTomatoes Rating:\t${response.data.Ratings[1].Value}`+
+            `\n\tCountry of Production:\t${response.data.Country}`+
+            `\n\tLanguage/s:\t\t${response.data.Language}`+
+            `\n\tPlot:\t\t\t${response.data.Plot}`+
+            `\n\tActors:\t\t\t${response.data.Actors}\n`);
         })
 }
 
