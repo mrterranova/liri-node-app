@@ -80,10 +80,14 @@ function spotifyThis(song) {
 
 //function for finding a movie
 function movieThis(movie) {
-    console.log("Movie this result", movie);
+    //if user forgets movie then replace with Mr. Nobody
+    if (movie === ""){
+        movie = "Mr. Nobody"
+    }
+    //axios call for OMDB
     axios.get(`http://www.omdbapi.com/?t=${movie}&y=&plot=short&apikey=trilogy`).then(
         function (response) {
-            // console.log(response.data)
+            //return all the information
             console.log(`\n-------------------------------------\nInformation on ${response.data.Title}:\n-------------------------------------\n\tYear of Release:\t${response.data.Year}\n\tIMBD Rating:\t\t${response.data.imdbRating}\n\tTomatoes Rating:\t${response.data.Ratings[1].Value}\n\tCountry of Production:\t${response.data.Country}\n\tLanguage/s:\t\t${response.data.Language}\n\tPlot:\t\t\t${response.data.Plot}\n\tActors:\t\t\t${response.data.Actors}\n`);
         })
 }
