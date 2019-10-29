@@ -71,11 +71,11 @@ The gif below show how easy it is to use this version of the app.
 
 ## Features Included
 
-All the information that the user performs is saved on the Random.txt file provided in the program. Note that none of the information will repeat itself. For example, if the user types "The Incredibles" and then later types "The Incredibles", the results will show up only once.
+- All the information that the user performs is saved on the Random.txt file provided in the program. Note that none of the information will repeat itself. For example, if the user types "The Incredibles" and then later types "The Incredibles", the results will show up only once.
 
-User does not need to include "quotes" between words. This is handled in the file under the "global variables."
+- User does not need to include "quotes" for multiple words. This is handled in the file under the "global variables" under variable argv3.
 
-Validation with personal messages are included for default commands as well as concert-this if there are no upcoming concerts.
+- Validation with personal messages are included for default commands as well as concert-this if there are no upcoming concerts.
 
 
 
