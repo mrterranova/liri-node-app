@@ -65,6 +65,10 @@ Do-What-It-Says commands in practice
 
 ![alt text](./images/do-what-it-says.gif)
 
+If you wish to have a more user-friendly version of this program. Please use liriWithInquirer instead. 
+The gif below show how easy it is to use this version of the app.
+![alt text](./images/Inquirer.gif)
+
 ## Features Included
 
 All the information that the user performs is saved on the Random.txt file provided in the program. Note that none of the information will repeat itself. For example, if the user types "The Incredibles" and then later types "The Incredibles", their results will show up only once.

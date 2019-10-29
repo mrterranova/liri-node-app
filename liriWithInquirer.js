@@ -51,6 +51,20 @@ function switchCase() {
     });
 }
 
+function doWhatItSays(argv2, argv3) {
+    switch (argv2) {
+        case "concert-this":
+            concertThis(argv3);
+            break;
+        case "spotify-this-song":
+            spotifyThis(argv3);
+            break;
+        case "movie-this":
+            movieThis(argv3);
+            break;
+    }
+}
+
 
 //function for finding a concert
 function concertThis(artist) {
@@ -158,7 +172,7 @@ function doThis() {
             }
             //call switchCase function on every other space
             if (i % 2 === 1) {
-                switchCase()
+                doWhatItSays(argv2, argv3);
             }
         }
     });
