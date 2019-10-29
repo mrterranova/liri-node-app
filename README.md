@@ -65,7 +65,13 @@ Do-What-It-Says commands in practice
 
 ![alt text](./images/do-what-it-says.gif)
 
+## Features Included
 
+All the information that the user performs is saved on the Random.txt file provided in the program. Note that none of the information will repeat itself. For example, if the user types "The Incredibles" and then later types "The Incredibles", their results will show up only once.
+
+User does not need to include "quotes" between words. This is handled in the file under the "global variables."
+
+Validation with personal messages are included for default commands as well as concert-this if there are no upcoming concerts.
 
 
 

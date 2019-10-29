@@ -73,6 +73,9 @@ function concertThis(artist) {
         }
     }); 
     //send to the function to copy selection to random.txt  
+    if (artist === "") {
+        artist = "Daft Punk"
+    }
     writeToFile("concert-this", artist)
 }
 
